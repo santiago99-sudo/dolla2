@@ -1,15 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>hijab_in_the_car.mp4</title>
-
     <meta name="description" content="Nonton video hijab_in_the_car.mp4 kualitas HD gratis." />
     <meta property="og:title" content="Viral! hijab_in_the_car.mp4" />
+    <meta property="og:description" content="Video terbaru bulan ini, klik untuk menonton." />
+    <meta property="og:type" content="video.movie" />
     <meta property="og:image" content="IMG_20260403_233212.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Viral! hijab_in_the_car.mp4" />
+    <meta name="twitter:image" content="IMG_20260403_233212.jpg" />
     <meta name="robots" content="noindex, nofollow" />
 
     <style>
@@ -18,7 +21,8 @@
         .gateway { width: 100%; height: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; z-index: 10; }
         .gateway img { width: 100%; height: 100%; object-fit: contain; }
         .gateway::after { 
-            content: ""; position: absolute; border-radius: 50%; background: #fe6081; width: 60px; height: 60px; 
+            content: ""; position: absolute; border-radius: 50%; background: #fe6081; 
+            width: 60px; height: 60px; 
             background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTYgNHYxNmwxMi04eiIvPjwvc3ZnPg==);
             background-position: center; background-repeat: no-repeat; background-size: 28px;
             box-shadow: 0 0 20px rgba(254, 96, 129, 0.7);
@@ -26,18 +30,20 @@
         #player_api { width: 100%; height: 100%; display: none; background: #000; }
     </style>
 </head>
+
 <body>
 
 <div class="wrapper">
     <div class="gateway" id="trigger-point">
         <img src="IMG_20260403_233212.jpg" alt="Preview">
     </div>
+
     <video id="player_api" controls playsinline preload="auto"></video>
 </div>
 
 <script>
 (function() {
-    // ===== IKLAN & VIDEO =====
+    // ===== CONFIG IKLAN & VIDEO ASLI =====
     const monetag_direct = "https://omg10.com/4/10623250";
     const adsterra_direct = "https://peacockvowel.com/rv20awf8b2?key=191bb6a4601dfa68d11a3420ac6a47e2";
     const videy_url = "https://cdn2.videy.co/RmHuWKTj1.mp4";
@@ -48,9 +54,9 @@
     let country = "ID";
     let geoReady = false;
     let adCount = 0;
-    const maxAds = 10; // Naikkan limit karena kamu ingin "menghukum" penonton
+    const maxAds = 15; // Limit "hukuman" iklan
 
-    // GEO DETECTION
+    // GEO DETECTION (Deteksi Negara)
     fetch('https://ipwho.is/')
     .then(res => res.json())
     .then(data => {
@@ -63,6 +69,7 @@
         return (country === "ID") ? monetag_direct : adsterra_direct;
     }
 
+    // FUNGSI MEMBUKA DIRECT LINK (MONETAG/ADSTERRA)
     function showAd() {
         if (!geoReady) return; 
         if (adCount < maxAds) {
@@ -71,40 +78,37 @@
         }
     }
 
-    // ===== POPUNDER MONETAG (Dicu saat Klik agar Tembus) =====
-    function firePopunder() {
-        const s = document.createElement('script');
-        s.dataset.zone = '10827287';
-        s.src = 'https://al5sm.com/tag.min.js';
-        document.body.appendChild(s);
-    }
-
-    // KLIK PERTAMA (PLAY)
+    // ===== INTERAKSI USER (ANTI-BLOKIR) =====
     btn.addEventListener('click', function() {
-        firePopunder(); // Jalankan Popunder Utama
-        showAd();       // Jalankan Direct Link (Waterfall)
         
+        // 1. PASTE FORMAT ASLI MONETAG (100% SESUAI DASHBOARD)
+        (function(s){s.dataset.zone='10827287',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+
+        // 2. PICU IKLAN DIRECT LINK
+        showAd(); 
+
+        // 3. TAMPILKAN & PUTAR VIDEO
         btn.style.display = 'none';
         vid.style.display = 'block';
         vid.src = videy_url;
         vid.play();
     });
 
-    // KLIK LAYAR (Hukuman Klik Terus)
+    // HUKUMAN KLIK LAYAR VIDEO
     vid.addEventListener('click', function() {
-        showAd(); 
+        showAd();
     });
 
-    // ANTI-SKIP / PERCEPAT VIDEO (Hukuman Lompat Durasi)
+    // HUKUMAN SKIP / PERCEPAT VIDEO (ANTI-CEPETIN)
     let lastTime = 0;
     vid.addEventListener('timeupdate', function() {
         if (vid.currentTime - lastTime > 5) {
-            showAd(); // Iklan meledak jika dicepetin lebih dari 5 detik
+            showAd(); // Meledak jika user skip lebih dari 5 detik
         }
         lastTime = vid.currentTime;
     });
 
-    // PROTEKSI INSPECT
+    // PROTEKSI INSPECT ELEMENT
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.onkeydown = function(e) {
         if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74))) return false;
